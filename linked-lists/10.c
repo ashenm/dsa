@@ -32,10 +32,10 @@ node* pop (deque *list);
 // removes the leftmost node
 node* shift (deque *list);
 
-// conjoins a node to right
+// conjoins a node to left
 deque* unshift (deque *list, int value);
 
-// conjoins a node to left
+// conjoins a node to right
 deque* push (deque *list, int value);
 
 // computes the node count
