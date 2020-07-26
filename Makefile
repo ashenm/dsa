@@ -14,8 +14,7 @@ compile: *.c ## compile *.c source files
 
 valgrind: compile *.c ## assess *.c source binaries
 	for file in $(patsubst %.c,%,$(filter %.c,$?)); do \
-		valgrind --quiet --error-exitcode=1 --leak-check=full --undef-value-errors=no ./$${file} >> /dev/null 2>&1 ;\
-		if [ $$? -eq 0 ]; then \
+		if valgrind --quiet --error-exitcode=1 --leak-check=full --undef-value-errors=no ./$${file} >> /dev/null 2>&1; then \
 			echo "'$${file}' $(ANSI_GREEN)All heap blocks were freed -- no leaks are possible :)$(ANSI_RESET)"; \
 		else \
 			echo "'$${file}' $(ANSI_RED)Allocated heap blocks not freed -- memory leaks detected :($(ANSI_RESET)"; \
